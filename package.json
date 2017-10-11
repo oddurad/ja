@@ -1,5 +1,7 @@
 {
   "name": "ja",
+  "author": "Oddur Aðalgeirsson <oddurad@gmail.com>",
+  "description": "A sample app using Já's API to retrieve and view search results",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -22,6 +24,8 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
+    "corser": "^2.0.1",
+    "request": "^2.83.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

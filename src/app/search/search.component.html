@@ -1,0 +1,11 @@
+<input #searchBox type="text" (keyup.enter)="search(searchBox.value)" placeholder="t.d. &quot;Matur&quot;...">
+
+<h2 *ngIf="peopleResults.length > 0">Einstaklingar</h2>
+<ul *ngFor="let person of peopleResults">
+  <li>{{person.first_name}} {{person.middle_name}} {{person.last_name}}</li>
+</ul>
+
+<h2 *ngIf="businessResults.length > 0">Fyrirtæki</h2>
+<ul *ngFor="let business of businessResults">
+  <li>{{business.first_name}}</li>
+</ul>
