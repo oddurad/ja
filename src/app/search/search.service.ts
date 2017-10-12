@@ -14,8 +14,8 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   search(query: string) {
-    return this.http.get('http://localhost:5000/search/', {
-      params: new HttpParams().set('q', query)
+    return this.http.get('https://api.ja.is/search/v6/', {
+      params: new HttpParams().set('q', query).set('access_code', '<YOUR_API_KEY>')
     });
   }
 
