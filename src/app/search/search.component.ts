@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchService } from './search.service';
+import { SearchResult } from './search-result';
 
 @Component({
   selector: 'search',
@@ -13,9 +14,15 @@ export class SearchComponent {
 
   search (queryString: string) {
     this.searchService.search(queryString).subscribe((data) => {
-      console.log(data)
-      this.peopleResults = data['people']['items'] || [];
-      this.businessResults = data['businesses']['items'] || [];
+      this.peopleResults = [];
+      this.businessResults = [];
+
+      data['businesses']['items'].forEach((business) => {
+        this.businessResults.push(new SearchResult(business));
+      });
+      data['people']['items'].forEach((person) => {
+        this.peopleResults.push(new SearchResult(person));
+      });
     });
   }
 }
