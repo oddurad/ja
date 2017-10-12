@@ -4,11 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="container">
-      <search></search>
+      <router-outlet></router-outlet>
     </div>
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'app';
 }

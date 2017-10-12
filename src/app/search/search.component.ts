@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { SearchService } from './search.service';
 import { SearchResult } from './search-result';
 
@@ -7,13 +9,28 @@ import { SearchResult } from './search-result';
   templateUrl: './search.component.html',
   styles: []
 })
-export class SearchComponent {
-  constructor(private searchService: SearchService) {}
-  peopleResults = [];
+export class SearchComponent implements OnInit {
   businessResults = [];
+  peopleResults = [];
+  queryString: string = '';
 
-  search (queryString: string) {
-    this.searchService.search(queryString).subscribe((data) => {
+  constructor(
+    private searchService: SearchService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      let q = params.get('q');
+      if (q !== null) {
+        this.queryString = q;
+        this.search();
+      }
+    })
+  }
+
+  search () {
+    this.searchService.search(this.queryString).subscribe((data) => {
       this.peopleResults = [];
       this.businessResults = [];
 

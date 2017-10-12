@@ -10,8 +10,9 @@ export class SearchResult {
   companyType: Array<string>;
   logoUrl: string;
   logoUrlLow: string;
+  nationalIdNumber: string;
 
-  constructor(obj) {
+  constructor(obj?) {
     this.name = obj['name'];
     this.first_name = obj['first_name'];
     this.middle_name = obj['middle_name'];
@@ -21,5 +22,6 @@ export class SearchResult {
     this.companyType = obj['company_type'];
     this.logoUrl = obj['logo_url'] ? IMG_PREFIX + obj['logo_url'] : undefined;
     this.logoUrlLow = obj['logo_url_low'] ? IMG_PREFIX + obj['logo_url_low'] : undefined;
+    this.nationalIdNumber = obj['national_id_number'];
   }
 }
