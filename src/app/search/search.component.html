@@ -1,37 +1,59 @@
-<input #searchBox type="text" class="form-control" (keyup.enter)="search(searchBox.value)" placeholder="t.d. &quot;Matur&quot;...">
+<div class="row logo-top">
+  <img class="center-block img-responsive" src="/assets/img/ja.png">
+</div>
 
-<h3 *ngIf="businessResults.length > 0">Fyrirtæki</h3>
-<table class="table">
-  <tr *ngFor="let business of businessResults">
-    <td>
-      <div class="row result-row">
-        <div class="col-xs-4 col-sm-2">
-          <img class="img-responsive center-block" *ngIf="business.logoUrl" [src]="business.logoUrl">
-        </div>
-        <div class="col-xs-8 col-sm-10">
-          <span class="h4">{{business.name}}</span> <em class="text-muted">{{business.occupation}}</em><br>
-          <ng-container *ngIf="business.address">
-            {{business.address}}<br>
-          </ng-container>
-          <ng-container *ngFor="let type of business.companyType">
-            <span class="text-muted">{{type}} </span>
-          </ng-container>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+    <input #searchBox type="text" class="form-control" (keyup.enter)="search(searchBox.value)"
+    placeholder="Leitaðu að t.d. &quot;Jón Jónsson&quot;, &quot;pizza&quot; eða &quot;verkstæði&quot;">
+  </div>
+</div>
 
-<h3 *ngIf="peopleResults.length > 0">Einstaklingar</h3>
-<table class="table">
-  <tr *ngFor="let person of peopleResults">
-    <td>
-      <div class="row result-row">
-        <div class="col-xs-12">
-          <span class="h4">{{person.first_name}} {{person.middle_name}} {{person.last_name}}</span> <em class="text-muted">{{person.occupation}}</em>
-          <br>{{person.address}}
+<ng-container *ngIf="businessResults.length > 0">
+  <h3>Fyrirtæki</h3>
+  <table class="table">
+    <tr *ngFor="let business of businessResults">
+      <td>
+        <div class="row result-row">
+          <div class="col-xs-4 col-sm-2">
+            <img class="img-responsive center-block" *ngIf="business.logoUrl" [src]="business.logoUrl">
+            <div class="text-center logo-placeholder" *ngIf="!business.logoUrl">
+              <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="col-xs-8 col-sm-10">
+            <span class="h4">{{business.name}}</span> <em class="text-muted">{{business.occupation}}</em><br>
+            <ng-container *ngIf="business.address">
+              {{business.address}}<br>
+            </ng-container>
+            <ng-container *ngFor="let type of business.companyType">
+              <span class="text-muted">{{type}} </span>
+            </ng-container>
+          </div>
         </div>
-      </div>
-    </td>
-  </tr>
-</table>
+      </td>
+    </tr>
+  </table>
+</ng-container>
+
+<ng-container *ngIf="peopleResults.length > 0">
+  <h3>Einstaklingar</h3>
+  <table class="table">
+    <tr *ngFor="let person of peopleResults">
+      <td>
+        <div class="row result-row">
+          <div class="col-xs-4 col-sm-2">
+            <img class="img-responsive center-block" *ngIf="person.logoUrl" [src]="person.logoUrl">
+            <div class="text-center logo-placeholder" *ngIf="!person.logoUrl">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="col-xs-8 col-sm-10">
+            <span class="h4">{{person.first_name}} {{person.middle_name}} {{person.last_name}}</span> <em class="text-muted">{{person.occupation}}</em>
+            <br>{{person.address}}
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</ng-container>
