@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { SearchService } from './search.service';
 import { SearchResult } from './search-result';
@@ -16,7 +16,8 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private searchService: SearchService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class SearchComponent implements OnInit {
 
   search () {
     this.searchService.search(this.queryString).subscribe((data) => {
+      this.router.navigate(['/search', { q: this.queryString }]); // add the q parameter to the URL
       this.peopleResults = [];
       this.businessResults = [];
 
