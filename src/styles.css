@@ -10,3 +10,19 @@
 .logo-top {
   margin: 8px 4px 8px 4px;
 }
+
+.details-link {
+  color: #000000;
+}
+
+.details-link:hover {
+  color: #000000;
+}
+
+.details-contact-column {
+  padding-top: 20px;
+}
+
+.details-map {
+  border: 1px solid lightgray;
+}

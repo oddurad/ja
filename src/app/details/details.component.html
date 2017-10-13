@@ -1,3 +1,56 @@
-<div *ngIf="result | async as result">
-  <p>{{result.name}}</p>
+<div class="panel panel-default" *ngIf="result | async as result">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <img class="img-responsive" *ngIf="result.logoUrl" [src]="result.logoUrl">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h3>{{result.name}}</h3>
+        <p>
+          <ng-container *ngIf="result.address">{{result.address}}, {{result.postalStation}}<br></ng-container>
+          <ng-container *ngIf="!result.isPerson && result.nationalIdNumber">Kennitala: <strong>{{result.nationalIdNumber | prettyId}}</strong><br></ng-container>
+          <ng-container *ngIf="result.vatNumber">VSK númer: <strong>{{result.vatNumber}}</strong><br></ng-container>
+        </p>
+      </div>
+      <div class="col-xs-12 col-sm-6 details-contact-column">
+        <p>
+          <ng-container *ngIf="result.phone">
+            <a class="details-link" [attr.href]="'tel:' + result.phone.number">
+              <ng-container *ngIf="result.phone.mobile"><i class="fa fa-mobile fa-fw fa-2x"></i> </ng-container>
+              <ng-container *ngIf="!result.phone.mobile"><i class="fa fa-phone-square fa-fw fa-2x"></i> </ng-container>
+              {{result.phone.pretty}}<br>
+            </a>
+          </ng-container>
+          <ng-container *ngFor="let phone of result.additionalPhones">
+            <a class="details-link" [attr.href]="'tel:' + phone.number">
+              <ng-container *ngIf="phone.mobile"><i class="fa fa-mobile fa-fw fa-2x"></i> </ng-container>
+              <ng-container *ngIf="!phone.mobile"><i class="fa fa-phone-square fa-fw fa-2x"></i> </ng-container>
+              {{phone.pretty}}<br>
+            </a>
+          </ng-container>
+          <ng-container *ngIf="result.email">
+            <a class="details-link" [attr.href]="'mailto:' + result.email"><i class="fa fa-envelope fa-fw fa-2x"></i> {{result.email}}</a><br>
+          </ng-container>
+          <ng-container *ngFor="let item of result.social">
+            <ng-container *ngIf="item.type == 'FB'">
+              <a class="details-link" [attr.href]="'http://' + item.account"><i class="fa fa-facebook-official fa-fw fa-2x"></i> Facebook</a><br>
+            </ng-container>
+            <ng-container *ngIf="item.type == 'LI'">
+              <a class="details-link" [attr.href]="'http://' + item.account"><i class="fa fa-linkedin-square fa-fw fa-2x"></i> LinkedIn</a><br>
+            </ng-container>
+            <ng-container *ngIf="item.type == 'GH'">
+              <a class="details-link" [attr.href]="'http://' + item.account"><i class="fa fa-github-square fa-fw fa-2x"></i> GitHub</a><br>
+            </ng-container>
+          </ng-container>
+        </p>
+      </div>
+    </div>
+    <div class="row" *ngIf="result.geo as geo">
+      <div class="col-xs-12">
+        <img class="details-map img-responsive" [attr.src]="geo.map_links.static + '&width=400&mark=1&mark_type=person'">
+      </div>
+    </div>
+  </div>
 </div>

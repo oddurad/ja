@@ -34,8 +34,8 @@
 
 <ng-container *ngIf="peopleResults.length > 0">
   <h3>Einstaklingar</h3>
-  <table class="table">
-    <tr *ngFor="let person of peopleResults">
+  <table class="table table-hover">
+    <tr *ngFor="let person of peopleResults" [routerLink]="['/details', person.nationalIdNumber]">
       <td>
         <div class="row result-row">
           <div class="col-xs-4 col-sm-2">

@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { SearchService } from './search/search.service';
 import { DetailsComponent } from './details/details.component';
+import { PrettyIdPipe } from './details/pretty-id.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    DetailsComponent
+    DetailsComponent,
+    PrettyIdPipe
   ],
   imports: [
     BrowserModule,

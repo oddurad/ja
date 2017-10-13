@@ -9,8 +9,15 @@ export class SearchResult {
   address: string;
   companyType: Array<string>;
   logoUrl: string;
-  logoUrlLow: string;
   nationalIdNumber: string;
+  vatNumber: string;
+  phone: object;
+  additionalPhones: Array<object>;
+  email: string;
+  social: Array<object>;
+  isPerson: boolean;
+  postalStation: string;
+  geo: object;
 
   constructor(obj?) {
     this.name = obj['name'];
@@ -21,7 +28,14 @@ export class SearchResult {
     this.address = obj['address'];
     this.companyType = obj['company_type'];
     this.logoUrl = obj['logo_url'] ? IMG_PREFIX + obj['logo_url'] : undefined;
-    this.logoUrlLow = obj['logo_url_low'] ? IMG_PREFIX + obj['logo_url_low'] : undefined;
     this.nationalIdNumber = obj['national_id_number'];
+    this.vatNumber = obj['vat_number'];
+    this.phone = obj['phone'];
+    this.additionalPhones = obj['additional_phones'];
+    this.email = obj['email'];
+    this.social = obj['social'];
+    this.isPerson = obj['is_person'];
+    this.postalStation = obj['postal_station'];
+    this.geo = obj['geo'];
   }
 }
