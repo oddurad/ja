@@ -4,6 +4,10 @@
   color: #333;
 }
 
+.more-results-row {
+  padding-bottom: 10px;
+}
+
 .logo-placeholder {
   height: 70px;
   margin-top: 15px;

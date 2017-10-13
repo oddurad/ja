@@ -13,9 +13,14 @@ export class Result {
 export class SearchService {
   constructor(private http: HttpClient) { }
 
-  search(query: string) {
+  search(query: string, start?: number, count?: number, scope?: string) {
     return this.http.get('https://api.ja.is/search/v6/', {
-      params: new HttpParams().set('q', query).set('access_code', '<YOUR_API_KEY>')
+      params: new HttpParams()
+      .set('q', query)
+      .set('access_code', '<YOUR_API_KEY>')
+      .set('start', start ? start.toString() : '1')
+      .set('count', count ? count.toString() : '10')
+      .set('scope', scope || 'fast')
     });
   }
 
