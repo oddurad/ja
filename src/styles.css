@@ -1,5 +1,6 @@
 .result-row {
   min-height: 70px;
+  cursor: pointer;
 }
 
 .logo-placeholder {

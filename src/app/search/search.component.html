@@ -7,7 +7,7 @@
 
 <ng-container *ngIf="businessResults.length > 0">
   <h3>Fyrirtæki</h3>
-  <table class="table">
+  <table class="table table-hover">
     <tr *ngFor="let business of businessResults" [routerLink]="['/details', business.nationalIdNumber]">
       <td>
         <div class="row result-row">
