@@ -1,6 +1,7 @@
 .result-row {
   min-height: 70px;
   cursor: pointer;
+  color: #333;
 }
 
 .logo-placeholder {
@@ -13,11 +14,11 @@
 }
 
 .details-link {
-  color: #000000;
+  color: #333;
 }
 
 .details-link:hover {
-  color: #000000;
+  color: #333;
 }
 
 .details-contact-column {
