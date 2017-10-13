@@ -25,9 +25,12 @@
             </div>
           </div>
           <div class="col-xs-8 col-sm-10">
-            <span class="h4">{{business.name}}</span> <em class="text-muted">{{business.occupation}}</em><br>
+            <span class="h4">{{business.name}}</span>
+            <em class="text-muted">{{business.occupation}}</em>
+            <br>
             <ng-container *ngIf="business.address">
-              {{business.address}}<br>
+              {{business.address}}, {{business.postalStation}}
+              <br>
             </ng-container>
             <ng-container *ngFor="let type of business.companyType">
               <span class="text-muted">{{type}} </span>
@@ -52,8 +55,12 @@
             </div>
           </div>
           <div class="col-xs-8 col-sm-10">
-            <span class="h4">{{person.first_name}} {{person.middle_name}} {{person.last_name}}</span> <em class="text-muted">{{person.occupation}}</em>
-            <br>{{person.address}}
+            <span class="h4">{{person.name}}</span>
+            <em class="text-muted">{{person.occupation}}</em>
+            <br>
+            <ng-container *ngIf="person.address">
+              {{person.address}}, {{person.postalStation}}
+            </ng-container>
           </div>
         </div>
       </td>
