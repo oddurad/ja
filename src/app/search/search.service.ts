@@ -20,7 +20,9 @@ export class SearchService {
   }
 
   fetchById(nationalIdNumber: string) {
+    // fetch a single result using the /search API
     return this.search(nationalIdNumber).map((results) => {
+      // TODO: nationalIdNumber (kennitala) is not a truly unique identifier, this needs to be handled differently
       let businessResult = results['businesses']['items'].find(result => result.national_id_number == nationalIdNumber);
       let personResult = results['people']['items'].find(result => result.national_id_number == nationalIdNumber);
       return new SearchResult(businessResult || personResult);

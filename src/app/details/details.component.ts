@@ -19,6 +19,7 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // get the 'id' parameter from the URL and fetch the appropriate result
     this.result = this.route.paramMap.switchMap((params: ParamMap) => {
       return this.searchService.fetchById(params.get('id'));
     });
