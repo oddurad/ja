@@ -30,7 +30,11 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  search () {
+  search() {
+    if (this.queryString == undefined || this.queryString === '') {
+      return;
+    }
+
     this.searchService.search(this.queryString).subscribe((data) => {
       this.router.navigate(['/search', { q: this.queryString }]); // add the q parameter to the URL
       this.peopleResults = [];

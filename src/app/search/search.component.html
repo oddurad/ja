@@ -1,7 +1,14 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3 col-xs-12">
-    <input type="text" class="form-control" [(ngModel)]="queryString" (keyup.enter)="search()"
-    placeholder="Leitaðu að t.d. &quot;Jón Jónsson&quot;, &quot;pizza&quot; eða &quot;verkstæði&quot;">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="queryString" (keyup.enter)="search()"
+        placeholder="Leitaðu að t.d. &quot;Jón Jónsson&quot;, &quot;pizza&quot; eða &quot;verkstæði&quot;">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" (click)="search()"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 
